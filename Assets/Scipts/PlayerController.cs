@@ -11,10 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float driftTime = 0.5f;
 
     private Rigidbody _rb;
-
     private float _yRotation;
     private Vector3 _shipForward;
-
+    private float _currentSpeed;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -23,16 +22,40 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _shipForward = Vector3.Lerp(_shipForward, transform.forward, Time.deltaTime * driftTime);
-        _shipForward.Normalize();
-        Debug.DrawLine(transform.position, transform.position + _shipForward * 5f, Color.red);
+        UpdateShipForward();
+        DebugDrawShipForward();
     }
 
     private void FixedUpdate()
     {
-        _rb.velocity = _shipForward * (speed * Mathf.Clamp01(Input.GetAxis("Vertical") + 1));
+        HandleMovement();
+        HandleSteering();
+    }
 
-        _yRotation += Input.GetAxis("Horizontal") * steeringForce;
+    private void UpdateShipForward()
+    {
+        _shipForward = Vector3.Lerp(_shipForward, transform.forward, Time.deltaTime * driftTime);
+        _shipForward.Normalize();
+    }
+
+    private void DebugDrawShipForward()
+    {
+        Debug.DrawLine(transform.position, transform.position + _shipForward * 5f, Color.red);
+    }
+
+    private void HandleMovement()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+        float targetSpeed = speed * Mathf.Clamp01(verticalInput + 1.2f);
+        _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, Time.deltaTime * 0.5f);
+        _rb.velocity = _shipForward * _currentSpeed;
+    }
+
+    private void HandleSteering()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+        float calculatedSteeringForce = Mathf.Lerp(0, steeringForce, speed * Mathf.Clamp01(verticalInput + 1.1f));
+        _yRotation += Input.GetAxis("Horizontal") * calculatedSteeringForce;
         transform.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
 }
