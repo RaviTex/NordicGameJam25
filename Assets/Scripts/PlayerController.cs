@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float steeringForce = 5f;
     [SerializeField] private float driftTime = 0.5f;
 
+    public int wood; 
     private Rigidbody _rb;
     private float _yRotation;
     private Vector3 _shipForward;
@@ -76,6 +77,24 @@ public class PlayerController : MonoBehaviour
         float calculatedSteeringForce = Mathf.Lerp(0, steeringForce, _currentSpeed / speed);
         _yRotation += Input.GetAxis("Horizontal") * calculatedSteeringForce;
         transform.rotation = Quaternion.Euler(0, _yRotation, 0);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("DropOff"))
+        {
+            wood = 0;
+            
+           
+        }
+        else if (other.gameObject.CompareTag("PickUp"))
+        {
+            wood++; 
+        }
+        
+
+        
+       
     }
 
     // private void OnDrawGizmos()
