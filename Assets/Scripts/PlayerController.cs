@@ -84,12 +84,14 @@ public class PlayerController : MonoBehaviour
                 wood = 0;
                 // targetGameObject.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
+                other.GetComponentInParent<InteractionBuildings>().StartDisable();
             }
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
             // targetGameObject.SetActive(true);
+            other.GetComponentInParent<InteractionBuildings>().StartDisable();
         }
     }
 
