@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             wood = 0;
             targetGameObject.SetActive(false);
-            Debug.Log("hit");
+            
 
         }
         else if (other.gameObject.CompareTag("PickUp"))
@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
     private void Gameover()
     {
         Gameover();   
