@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Ray rayRight = new Ray(transform.position, transform.right);
+        Ray rayLeft = new Ray(transform.position, -transform.right);
+        
         UpdateShipForward();
         DebugDrawShipForward();
     }
