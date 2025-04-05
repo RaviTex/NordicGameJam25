@@ -68,9 +68,12 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DropOff"))
         {
-            wood = 0;
-            targetGameObject.SetActive(false);
-            GameManager.Instance.curZonePairActive++;
+            if (wood > 0)
+            {
+                wood = 0;
+                targetGameObject.SetActive(false);
+                GameManager.Instance.curZonePairActive++;
+            }
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
