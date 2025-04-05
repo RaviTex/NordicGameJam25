@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour
             {
                 zonesPairs[i].pickUpZone.SetActive(true);
                 zonesPairs[i].dropOffZone.SetActive(true);
+                _pickUpMarker.SetActive(true);
+                _dropOffMarker.SetActive(true);
                 _curPickUpZone = zonesPairs[i].pickUpZone;
                 _curDropOffZone = zonesPairs[i].dropOffZone;
             }
@@ -105,5 +107,17 @@ public class GameManager : MonoBehaviour
             }
         }
         _oldCurZonePairActive = curZonePairActive;
+    }
+    
+    public void DisableMarker(bool isDropOff)
+    {
+        if (isDropOff)
+        {
+            _dropOffMarker.SetActive(false);
+        }
+        else
+        {
+            _pickUpMarker.SetActive(false);
+        }
     }
 }
