@@ -10,12 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float steeringForce = 5f;
     [SerializeField] private float driftTime = 0.5f;
 
-    public int wood; 
+    public int wood;
     private Rigidbody _rb;
     private float _yRotation;
     private Vector3 _shipForward;
     private float _currentSpeed;
-    public Transform log;
+    public GameObject targetGameObject;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         UpdateShipForward();
         DebugDrawShipForward();
     }
@@ -65,16 +67,30 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("DropOff"))
         {
             wood = 0;
-            
-           
+            targetGameObject.SetActive(false);
+            Debug.Log("hit");
+
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
-            wood++; 
-        }
-        
+            wood++;
+            targetGameObject.SetActive(true);
 
-        
-       
+
+        }
     }
+    private void Gameover()
+    {
+        Gameover();   
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+            {
+            Gameover();
+        }
+    }
+    
 }
+    
