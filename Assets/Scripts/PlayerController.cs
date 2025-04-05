@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float _yRotation;
     private Vector3 _shipForward;
     private float _currentSpeed;
+    public GameObject log;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -22,11 +24,25 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Ray rayRight = new Ray(transform.position, transform.right);
-        Ray rayLeft = new Ray(transform.position, -transform.right);
-        
         UpdateShipForward();
         DebugDrawShipForward();
+
+        // var colliders = Physics.OverlapBox(transform.position, new Vector3(2f, 1f, 2.5f), Quaternion.identity, LayerMask.GetMask("Land"));
+        // if(colliders.Length > 0)
+        // {
+        //     foreach (var collider in colliders)
+        //     {
+        //         print("Collided with land");
+        //         Ray ray = new Ray(transform.position, collider.ClosestPoint(transform.position) - transform.position);
+        //         if (Physics.Raycast(ray, out RaycastHit hit))
+        //         {
+        //             Debug.DrawLine(ray.origin, hit.point, Color.red);
+        //             var newShipForward = Vector3.ProjectOnPlane(hit.normal, ).normalized;
+        //             Debug.DrawLine(transform.position, transform.position + newShipForward * 5f, Color.green);
+        //             transform.forward = newShipForward;
+        //         }
+        //     }
+        // }
     }
 
     private void FixedUpdate()
@@ -49,8 +65,9 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         float verticalInput = Input.GetAxis("Vertical");
-        float targetSpeed = speed * Mathf.Clamp01(verticalInput + 1.2f);
+        float targetSpeed = speed * Mathf.Clamp(verticalInput + 1.2f, 0, 1.5f);
         _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, Time.deltaTime * 0.5f);
+        log.transform.localRotation = Quaternion.Euler(_currentSpeed * 10f - 30f, 180, 0);
         _rb.velocity = _shipForward * _currentSpeed;
     }
 
@@ -60,4 +77,9 @@ public class PlayerController : MonoBehaviour
         _yRotation += Input.GetAxis("Horizontal") * calculatedSteeringForce;
         transform.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
+
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.DrawCube(transform.position, new Vector3(4f, 2f, 5f));
+    // }
 }
