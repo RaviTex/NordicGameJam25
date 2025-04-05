@@ -86,8 +86,8 @@ public class GameManager : MonoBehaviour
             _dropOffMarker.transform.position = MarkerPosition(true);
             _pickUpMarker.transform.position = MarkerPosition(false);
             _dropOffDistanceText.text =
-                Vector3.Distance(_curDropOffZone.transform.position, playerController.transform.position).ToString("F1") + "m";
-            _pickUpDistanceText.text = Vector3.Distance(_curPickUpZone.transform.position, playerController.transform.position).ToString("F1") + "m";
+                Vector3.Distance(_curDropOffZone.transform.position, playerController.transform.position).ToString("0") + "m";
+            _pickUpDistanceText.text = Vector3.Distance(_curPickUpZone.transform.position, playerController.transform.position).ToString("0") + "m";
         }
     }
 
