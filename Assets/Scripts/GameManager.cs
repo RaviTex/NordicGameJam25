@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +16,15 @@ public class GameManager : MonoBehaviour
     
     private GameObject _curDropOffZone;
     private GameObject _curPickUpZone;
+    private GameObject _pickUpMarker;
+    private GameObject _dropOffMarker;
     public Image pickUpZoneImage;
     public Image dropOffZoneImage;
+    private TMP_Text _dropOffDistanceText;
+    private TMP_Text _pickUpDistanceText;
     
     public Camera _mainCamera;
+    public PlayerController playerController;
 
 
     private void Awake()
@@ -36,6 +42,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UpdateZones();
+        _dropOffDistanceText = dropOffZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
+        _pickUpDistanceText = pickUpZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
+        _dropOffMarker = dropOffZoneImage.transform.parent.gameObject;
+        _pickUpMarker = pickUpZoneImage.transform.parent.gameObject;
     }
 
 
@@ -48,8 +58,10 @@ public class GameManager : MonoBehaviour
         
         if(_curPickUpZone && _curDropOffZone)
         {
-            dropOffZoneImage.transform.position = MarkerPosition(true);
-            pickUpZoneImage.transform.position = MarkerPosition(false);
+            _dropOffMarker.transform.position = MarkerPosition(true);
+            _pickUpMarker.transform.position = MarkerPosition(false);
+            _dropOffDistanceText.text = Vector3.Distance(_curDropOffZone.transform.position, playerController.transform.position).ToString("F1") + "m";
+            _pickUpDistanceText.text = Vector3.Distance(_curPickUpZone.transform.position, playerController.transform.position).ToString("F1") + "m";
         }
     }
 
