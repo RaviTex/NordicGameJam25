@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float steeringForce = 5f;
     [SerializeField] private float driftTime = 0.5f;
+    [SerializeField] private float customYLevel; 
 
     public int wood;
     private Rigidbody _rb;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateShipForward();
         DebugDrawShipForward();
-        _rb.MovePosition(new Vector3(transform.position.x, 0.3f, transform.position.z));
+        _rb.MovePosition(new Vector3(transform.position.x, customYLevel, transform.position.z));
     }
 
     private void FixedUpdate()
