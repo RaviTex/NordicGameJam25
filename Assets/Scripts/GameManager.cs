@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private TMP_Text _dropOffDistanceText;
     private TMP_Text _pickUpDistanceText;
     
-    public Camera _mainCamera;
+    private Camera _mainCamera;
     public PlayerController playerController;
 
 
@@ -41,11 +41,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateZones();
+        _mainCamera = Camera.main;
         _dropOffDistanceText = dropOffZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
         _pickUpDistanceText = pickUpZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
         _dropOffMarker = dropOffZoneImage.transform.parent.gameObject;
         _pickUpMarker = pickUpZoneImage.transform.parent.gameObject;
+        UpdateZones();
     }
 
 
@@ -74,14 +75,7 @@ public class GameManager : MonoBehaviour
         Vector2 screenPos = _mainCamera.WorldToScreenPoint(isDropOff ? _curDropOffZone.transform.position : _curPickUpZone.transform.position);
         if(Vector3.Dot((isDropOff ? _curDropOffZone.transform.position : _curPickUpZone.transform.position) - _mainCamera.transform.position, _mainCamera.transform.forward) < 0)
         {
-            if(screenPos.x < Screen.width / 2)
-            {
-                screenPos.x = maxX;
-            }
-            else
-            {
-                screenPos.x = minX;
-            }
+            screenPos.x = screenPos.x < Screen.width / 2 ? maxX : minX;
         }
         
         screenPos.x = Mathf.Clamp(screenPos.x, minX, maxX);
