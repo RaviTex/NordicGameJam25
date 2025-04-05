@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public List<ZonesPair> zonesPairs;
 
-    public int curZonePairActive;
-    private int _oldCurZonePairActive;
+    public int curZonePairActive = 0;
+    private int _oldCurZonePairActive = 0;
     
     private GameObject _curDropOffZone;
     private GameObject _curPickUpZone;

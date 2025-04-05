@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float _yRotation;
     private Vector3 _shipForward;
     private float _currentSpeed;
-    public GameObject targetGameObject;
+    // public GameObject targetGameObject;
     public GameObject log;
 
     private Quaternion _startRotation;
@@ -82,14 +82,14 @@ public class PlayerController : MonoBehaviour
             if (wood > 0)
             {
                 wood = 0;
-                targetGameObject.SetActive(false);
+                // targetGameObject.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
             }
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
-            targetGameObject.SetActive(true);
+            // targetGameObject.SetActive(true);
         }
     }
 
