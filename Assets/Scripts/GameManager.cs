@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private TMP_Text _dropOffDistanceText;
     private TMP_Text _pickUpDistanceText;
     
-    public Camera _mainCamera;
+    private Camera _mainCamera;
     public PlayerController playerController;
 
 
@@ -41,11 +41,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateZones();
+        _mainCamera = Camera.main;
         _dropOffDistanceText = dropOffZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
         _pickUpDistanceText = pickUpZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
         _dropOffMarker = dropOffZoneImage.transform.parent.gameObject;
         _pickUpMarker = pickUpZoneImage.transform.parent.gameObject;
+        UpdateZones();
     }
 
 
