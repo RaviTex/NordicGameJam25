@@ -7,35 +7,24 @@ public class DeliveryBar : MonoBehaviour
 {
     [Header("Core Settings")]
     [SerializeField] private Image bar;
-    [SerializeField] private int resourceCurrent = 100;
-    [SerializeField] private int resourceMax = 100;
-    [Space]
-    [SerializeField] private bool overkillPossible;
+    [SerializeField] private int resourceCurrent = 0;
+    [SerializeField] private int resourceMax = 5;
     private void Start()
     {
         UpdateBarAndResourceText();
+        
     }
 
     private void UpdateBarAndResourceText()
     {
-        if (resourceMax <= 0)
-        {
-            bar.fillAmount = 0;
-            return;
-        }
-
         float fillAmount = (float) resourceCurrent / resourceMax;
-
         bar.fillAmount = fillAmount;
     }
-    public bool ChangeResourceByAmount(int amount)
+    public bool ChangeResourceByAmount()
     {
-        if (!overkillPossible && resourceCurrent + amount < 0)
-        
-            return false;
-            resourceCurrent += amount;
+            resourceCurrent ++;
             resourceCurrent = Mathf.Clamp(value: resourceCurrent, min: 0, resourceMax);
-        bar.fillAmount = (float) (resourceCurrent / resourceMax);
+        UpdateBarAndResourceText();
         return true;
     }
 }

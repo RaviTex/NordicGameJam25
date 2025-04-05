@@ -539,6 +539,11 @@ PrefabInstance:
       objectReference: {fileID: 822462033}
     - target: {fileID: 5913011828066204337, guid: c2ac98f16d038ec44920bf0212169bc1,
         type: 3}
+      propertyPath: testBar
+      value: 
+      objectReference: {fileID: 2112771004}
+    - target: {fileID: 5913011828066204337, guid: c2ac98f16d038ec44920bf0212169bc1,
+        type: 3}
       propertyPath: targetGameObject
       value: 
       objectReference: {fileID: 931031888}
@@ -1892,10 +1897,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1924,7 +1929,7 @@ MonoBehaviour:
   bar: {fileID: 1346693184}
   resourceCurrent: 100
   resourceMax: 100
-  overkillPossible: 1
+  overkillPossible: 0
 --- !u!1 &1283728021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,7 +2154,7 @@ MonoBehaviour:
   m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1346693185
@@ -2294,6 +2299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1540746377}
   - component: {fileID: 1540746378}
+  - component: {fileID: 1540746379}
   m_Layer: 0
   m_Name: Trigger zone
   m_TagString: DropOff
@@ -2337,6 +2343,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.45462248
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1540746379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540746376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310439e6937dd8d4a9b99f92de96f650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodValue: 100
+  resourceBarTracker: {fileID: 1245016364}
 --- !u!1 &1639757102
 GameObject:
   m_ObjectHideFlags: 0
@@ -2664,7 +2684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310439e6937dd8d4a9b99f92de96f650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodValue: 10
+  woodValue: -10
   resourceBarTracker: {fileID: 1245016364}
 --- !u!1 &2140451603
 GameObject:
