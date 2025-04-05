@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 160626015}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -588,7 +588,6 @@ MonoBehaviour:
   curZonePairActive: 0
   pickUpZoneImage: {fileID: 723680974}
   dropOffZoneImage: {fileID: 1753528312}
-  _mainCamera: {fileID: 160626013}
   playerController: {fileID: 901819152}
 --- !u!1 &382910600
 GameObject:
