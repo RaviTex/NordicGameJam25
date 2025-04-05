@@ -74,14 +74,7 @@ public class GameManager : MonoBehaviour
         Vector2 screenPos = _mainCamera.WorldToScreenPoint(isDropOff ? _curDropOffZone.transform.position : _curPickUpZone.transform.position);
         if(Vector3.Dot((isDropOff ? _curDropOffZone.transform.position : _curPickUpZone.transform.position) - _mainCamera.transform.position, _mainCamera.transform.forward) < 0)
         {
-            if(screenPos.x < Screen.width / 2)
-            {
-                screenPos.x = maxX;
-            }
-            else
-            {
-                screenPos.x = minX;
-            }
+            screenPos.x = screenPos.x < Screen.width / 2 ? maxX : minX;
         }
         
         screenPos.x = Mathf.Clamp(screenPos.x, minX, maxX);

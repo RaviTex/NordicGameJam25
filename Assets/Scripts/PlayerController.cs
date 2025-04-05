@@ -17,11 +17,14 @@ public class PlayerController : MonoBehaviour
     private float _currentSpeed;
     public GameObject targetGameObject;
     public GameObject log;
+    
+    private Quaternion _startRotation;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _shipForward = transform.forward;
+        _startRotation = transform.rotation;
     }
 
     private void Update()
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         float calculatedSteeringForce = Mathf.Lerp(1, steeringForce, _currentSpeed / speed);
         _yRotation += Input.GetAxis("Horizontal") * calculatedSteeringForce;
-        transform.rotation = Quaternion.Euler(0, _yRotation, 0);
+        transform.rotation = Quaternion.Euler(0, _yRotation, 0) * _startRotation;
     }
 
     private void OnTriggerEnter(Collider other)
