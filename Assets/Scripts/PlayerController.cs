@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("DropOff"))
         {
             wood = 0;
+            
            
         }
         else if (other.gameObject.CompareTag("PickUp"))
