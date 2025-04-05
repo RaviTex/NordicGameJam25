@@ -1131,7 +1131,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5178042b02df58940bb2926461eb5076, type: 2}
+  - {fileID: 2100000, guid: 16bd82d738a89444d82ef7510f087fea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1327,7 +1327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5178042b02df58940bb2926461eb5076, type: 2}
+  - {fileID: 2100000, guid: 16bd82d738a89444d82ef7510f087fea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1842,8 +1842,9 @@ GameObject:
   - component: {fileID: 1245016361}
   - component: {fileID: 1245016363}
   - component: {fileID: 1245016362}
+  - component: {fileID: 1245016364}
   m_Layer: 5
-  m_Name: Timer Bar
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1907,6 +1908,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245016360}
   m_CullTransparentMesh: 1
+--- !u!114 &1245016364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245016360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ff29059176ed248bf9d9b3f2e40f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 1346693184}
+  resourceCurrent: 100
+  resourceMax: 100
+  overkillPossible: 1
 --- !u!1 &1283728021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,7 +2095,7 @@ GameObject:
   - component: {fileID: 1346693185}
   - component: {fileID: 1346693184}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Delivery Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2123,8 +2140,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
+    type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
