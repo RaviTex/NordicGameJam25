@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DropOff
   - PickUp
+  - Obstacle
   layers:
   - Default
   - TransparentFX
