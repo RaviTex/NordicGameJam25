@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public int curZonePairActive = 0;
     private int _oldCurZonePairActive = 0;
-    
+
     private GameObject _curDropOffZone;
     private GameObject _curPickUpZone;
     private GameObject _pickUpMarker;
@@ -23,9 +23,11 @@ public class GameManager : MonoBehaviour
     public Image dropOffZoneImage;
     private TMP_Text _dropOffDistanceText;
     private TMP_Text _pickUpDistanceText;
-    
+
     private Camera _mainCamera;
     public PlayerController playerController;
+
+    public List<float> timeLeft;
 
 
     private void Awake()
@@ -43,13 +45,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _mainCamera = Camera.main;
-        if(dropOffZoneImage && pickUpZoneImage)
+        if (dropOffZoneImage && pickUpZoneImage)
         {
-        _dropOffDistanceText = dropOffZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
-        _pickUpDistanceText = pickUpZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
-        _dropOffMarker = dropOffZoneImage.transform.parent.gameObject;
-        _pickUpMarker = pickUpZoneImage.transform.parent.gameObject;
+            _dropOffDistanceText = dropOffZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
+            _pickUpDistanceText = pickUpZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
+            _dropOffMarker = dropOffZoneImage.transform.parent.gameObject;
+            _pickUpMarker = pickUpZoneImage.transform.parent.gameObject;
         }
+
         UpdateZones();
     }
 
@@ -60,12 +63,30 @@ public class GameManager : MonoBehaviour
         {
             UpdateZones();
         }
+        UpdateMarker();
         
-        if(_curPickUpZone && _curDropOffZone && pickUpZoneImage && dropOffZoneImage)
+        timeLeft[curZonePairActive] -= Time.deltaTime;
+        if(timeLeft[curZonePairActive] <= 0)
+        {
+            GameOver();
+            timeLeft[curZonePairActive] = 0;
+        }
+        UIManager.Instance.timeLeft = timeLeft[curZonePairActive];
+    }
+
+    public void GameOver()
+    {
+        UIManager.Instance.LoadMainMenu();
+    }
+
+    private void UpdateMarker()
+    {
+        if (_curPickUpZone && _curDropOffZone && pickUpZoneImage && dropOffZoneImage)
         {
             _dropOffMarker.transform.position = MarkerPosition(true);
             _pickUpMarker.transform.position = MarkerPosition(false);
-            _dropOffDistanceText.text = Vector3.Distance(_curDropOffZone.transform.position, playerController.transform.position).ToString("F1") + "m";
+            _dropOffDistanceText.text =
+                Vector3.Distance(_curDropOffZone.transform.position, playerController.transform.position).ToString("F1") + "m";
             _pickUpDistanceText.text = Vector3.Distance(_curPickUpZone.transform.position, playerController.transform.position).ToString("F1") + "m";
         }
     }
@@ -76,12 +97,14 @@ public class GameManager : MonoBehaviour
         float maxX = Screen.width - minX;
         float minY = isDropOff ? dropOffZoneImage.GetPixelAdjustedRect().height / 2 : pickUpZoneImage.GetPixelAdjustedRect().height / 2;
         float maxY = Screen.height - minY;
-        Vector2 screenPos = _mainCamera.WorldToScreenPoint((isDropOff ? _curDropOffZone.transform.position : _curPickUpZone.transform.position) + markerOffset);
-        if(Vector3.Dot((isDropOff ? _curDropOffZone.transform.position : _curPickUpZone.transform.position) - _mainCamera.transform.position, _mainCamera.transform.forward) < 0)
+        Vector2 screenPos =
+            _mainCamera.WorldToScreenPoint((isDropOff ? _curDropOffZone.transform.position : _curPickUpZone.transform.position) + markerOffset);
+        if (Vector3.Dot((isDropOff ? _curDropOffZone.transform.position : _curPickUpZone.transform.position) - _mainCamera.transform.position,
+                _mainCamera.transform.forward) < 0)
         {
-            screenPos.x = screenPos.x < Screen.width /2 ? minX : maxX;
+            screenPos.x = screenPos.x < Screen.width / 2 ? minX : maxX;
         }
-        
+
         screenPos.x = Mathf.Clamp(screenPos.x, minX, maxX);
         screenPos.y = Mathf.Clamp(screenPos.y, minY, maxY);
         return screenPos;
@@ -106,9 +129,10 @@ public class GameManager : MonoBehaviour
                 zonesPairs[i].dropOffZone.SetActive(false);
             }
         }
+
         _oldCurZonePairActive = curZonePairActive;
     }
-    
+
     public void DisableMarker(bool isDropOff)
     {
         if (isDropOff)

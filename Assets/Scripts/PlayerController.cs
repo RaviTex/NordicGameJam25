@@ -99,16 +99,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Gameover()
-    {
-        print("Game Over");
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Gameover();
+            GameManager.Instance.GameOver();
         }
     }
 }

@@ -10264,6 +10264,9 @@ MonoBehaviour:
   pickUpZoneImage: {fileID: 1182767311}
   dropOffZoneImage: {fileID: 1939853211}
   playerController: {fileID: 1662346656}
+  timeLeft:
+  - 50
+  - 40
 --- !u!4 &568984033
 Transform:
   m_ObjectHideFlags: 0
@@ -28264,6 +28267,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1512091628}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1512278714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1926829143540807554, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 9054724172760187548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1522404601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39013,6 +39028,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7600888875724557349, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: timeLeftText
+      value: 
+      objectReference: {fileID: 1512278714}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
