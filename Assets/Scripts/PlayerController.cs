@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
                 wood = 0;
                 // targetGameObject.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
+                UIManager.Instance.UpdateDeliveryBar();
                 other.GetComponentInParent<InteractionBuildings>().StartDisable();
             }
         }

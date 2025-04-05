@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     public TMP_Text timeLeftText;
     public float timeLeft = 50f;
+    public DeliveryBar deliveryBar;
 
     private void Awake()
     {
@@ -26,6 +27,11 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         timeLeftText.text = timeLeft.ToString("0.00");
+    }
+    
+    public void UpdateDeliveryBar()
+    {
+        deliveryBar.ChangeResourceByAmount();
     }
 
     public void Play()
