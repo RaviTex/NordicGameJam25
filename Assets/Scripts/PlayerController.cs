@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
         UpdateShipForward();
         DebugDrawShipForward();
     }
@@ -71,28 +70,24 @@ public class PlayerController : MonoBehaviour
             wood = 0;
             targetGameObject.SetActive(false);
             Debug.Log("hit");
-
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
             targetGameObject.SetActive(true);
-
-
         }
     }
+
     private void Gameover()
     {
-        Gameover();   
+        print("Game Over");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
-            {
+        {
             Gameover();
         }
     }
-    
 }
-    
