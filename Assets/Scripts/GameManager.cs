@@ -43,10 +43,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _mainCamera = Camera.main;
+        if(dropOffZoneImage && pickUpZoneImage)
+        {
         _dropOffDistanceText = dropOffZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
         _pickUpDistanceText = pickUpZoneImage.transform.parent.GetChild(1).GetComponent<TMP_Text>();
         _dropOffMarker = dropOffZoneImage.transform.parent.gameObject;
         _pickUpMarker = pickUpZoneImage.transform.parent.gameObject;
+        }
         UpdateZones();
     }
 
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
             UpdateZones();
         }
         
-        if(_curPickUpZone && _curDropOffZone)
+        if(_curPickUpZone && _curDropOffZone && pickUpZoneImage && dropOffZoneImage)
         {
             _dropOffMarker.transform.position = MarkerPosition(true);
             _pickUpMarker.transform.position = MarkerPosition(false);
