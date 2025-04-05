@@ -53,8 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleSteering()
     {
-        float verticalInput = Input.GetAxis("Vertical");
-        float calculatedSteeringForce = Mathf.Lerp(0, steeringForce, speed * Mathf.Clamp01(verticalInput + 1.1f));
+        float calculatedSteeringForce = Mathf.Lerp(0, steeringForce, _currentSpeed / speed);
         _yRotation += Input.GetAxis("Horizontal") * calculatedSteeringForce;
         transform.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
