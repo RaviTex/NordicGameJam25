@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private float _currentSpeed;
 
-    // public GameObject targetGameObject;
+    [SerializeField] private GameObject feedBackLogs;
     public GameObject log;
 
     private Quaternion _startRotation;
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             if (wood > 0)
             {
                 wood = 0;
-                // targetGameObject.SetActive(false);
+                feedBackLogs.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
                 UIManager.Instance.UpdateDeliveryBar();
                 other.GetComponentInParent<InteractionBuildings>().StartDisable();
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
-            // targetGameObject.SetActive(true);
+            feedBackLogs.SetActive(true);
             GameManager.Instance.DisableMarker(false);
             other.GetComponentInParent<InteractionBuildings>().StartDisable();
         }

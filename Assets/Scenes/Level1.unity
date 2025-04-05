@@ -1795,18 +1795,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913011828066204337, guid: c2ac98f16d038ec44920bf0212169bc1,
         type: 3}
-      propertyPath: customYLevel
-      value: 4.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913011828066204337, guid: c2ac98f16d038ec44920bf0212169bc1,
-        type: 3}
       propertyPath: targetGameObject
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8886903225353804253, guid: c2ac98f16d038ec44920bf0212169bc1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.496
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
