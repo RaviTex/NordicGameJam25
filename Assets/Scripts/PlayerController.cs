@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         {
             wood = 0;
             targetGameObject.SetActive(false);
+            GameManager.Instance.curZonePairActive++;
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
