@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _shipForward;
     private float _currentSpeed;
     public GameObject targetGameObject;
+    public GameObject log;
 
     private void Start()
     {
@@ -25,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
         UpdateShipForward();
         DebugDrawShipForward();
     }
@@ -50,8 +50,9 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         float verticalInput = Input.GetAxis("Vertical");
-        float targetSpeed = speed * Mathf.Clamp01(verticalInput + 1.2f);
+        float targetSpeed = speed * Mathf.Clamp(verticalInput + 1.2f, 0, 1.5f);
         _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, Time.deltaTime * 0.5f);
+        log.transform.localRotation = Quaternion.Euler(_currentSpeed * 10f - 30f, 180, 0);
         _rb.velocity = _shipForward * _currentSpeed;
     }
 
@@ -68,30 +69,24 @@ public class PlayerController : MonoBehaviour
         {
             wood = 0;
             targetGameObject.SetActive(false);
-            
-
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
             targetGameObject.SetActive(true);
-
-
         }
     }
 
     private void Gameover()
     {
-        Gameover();   
+        print("Game Over");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
-            {
+        {
             Gameover();
         }
     }
-    
 }
-    
