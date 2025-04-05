@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private float _yRotation;
     private Vector3 _shipForward;
+
     private float _currentSpeed;
+
     // public GameObject targetGameObject;
     public GameObject log;
 
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             targetRotation = Quaternion.Euler(0, 180, 0);
         }
+
         log.transform.localRotation = Quaternion.Lerp(log.transform.localRotation, targetRotation, Time.deltaTime * 0.5f);
         _rb.velocity = _shipForward * _currentSpeed;
     }
@@ -84,12 +87,15 @@ public class PlayerController : MonoBehaviour
                 wood = 0;
                 // targetGameObject.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
+                other.GetComponentInParent<InteractionBuildings>().StartDisable();
             }
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
             // targetGameObject.SetActive(true);
+            GameManager.Instance.DisableMarker(false);
+            other.GetComponentInParent<InteractionBuildings>().StartDisable();
         }
     }
 
