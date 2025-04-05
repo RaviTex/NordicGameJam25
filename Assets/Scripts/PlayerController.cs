@@ -28,11 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateShipForward();
         DebugDrawShipForward();
-    }
-
-    private void LateUpdate()
-    {
-        transform.position = new Vector3(transform.position.x, 0.3f, transform.position.z);
+        _rb.MovePosition(new Vector3(transform.position.x, 0.3f, transform.position.z));
     }
 
     private void FixedUpdate()
@@ -63,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleSteering()
     {
-        float calculatedSteeringForce = Mathf.Lerp(0, steeringForce, _currentSpeed / speed);
+        float calculatedSteeringForce = Mathf.Lerp(1, steeringForce, _currentSpeed / speed);
         _yRotation += Input.GetAxis("Horizontal") * calculatedSteeringForce;
         transform.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
