@@ -27,23 +27,6 @@ public class PlayerController : MonoBehaviour
     {
         UpdateShipForward();
         DebugDrawShipForward();
-
-        // var colliders = Physics.OverlapBox(transform.position, new Vector3(2f, 1f, 2.5f), Quaternion.identity, LayerMask.GetMask("Land"));
-        // if(colliders.Length > 0)
-        // {
-        //     foreach (var collider in colliders)
-        //     {
-        //         print("Collided with land");
-        //         Ray ray = new Ray(transform.position, collider.ClosestPoint(transform.position) - transform.position);
-        //         if (Physics.Raycast(ray, out RaycastHit hit))
-        //         {
-        //             Debug.DrawLine(ray.origin, hit.point, Color.red);
-        //             var newShipForward = Vector3.ProjectOnPlane(hit.normal, ).normalized;
-        //             Debug.DrawLine(transform.position, transform.position + newShipForward * 5f, Color.green);
-        //             transform.forward = newShipForward;
-        //         }
-        //     }
-        // }
     }
 
     private void FixedUpdate()
@@ -84,17 +67,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("DropOff"))
         {
             wood = 0;
-            
-           
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++; 
         }
-        
-
-        
-       
     }
 
     // private void OnDrawGizmos()
