@@ -9,17 +9,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float steeringForce = 5f;
     [SerializeField] private float driftTime = 0.5f;
-    [SerializeField] private float customYLevel; 
+    [SerializeField] private float customYLevel;
 
     public int wood;
     private Rigidbody _rb;
     private float _yRotation;
     private Vector3 _shipForward;
     private float _currentSpeed;
-    public GameObject targetGameObject;
+    // public GameObject targetGameObject;
     public GameObject log;
-    
+
     private Quaternion _startRotation;
+
+    public ParticleSystem logSplash;
 
     private void Start()
     {
@@ -57,7 +59,12 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         float targetSpeed = speed * Mathf.Clamp(verticalInput + 1.2f, 0, 1.5f);
         _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, Time.deltaTime * 0.5f);
-        log.transform.localRotation = Quaternion.Euler(_currentSpeed * 10f - 30f, 180, 0);
+        Quaternion targetRotation = Quaternion.Euler(_currentSpeed * 10f - 35f, 180, 0);
+        if (verticalInput == 0)
+        {
+            targetRotation = Quaternion.Euler(0, 180, 0);
+        }
+        log.transform.localRotation = Quaternion.Lerp(log.transform.localRotation, targetRotation, Time.deltaTime * 0.5f);
         _rb.velocity = _shipForward * _currentSpeed;
     }
 
@@ -75,14 +82,14 @@ public class PlayerController : MonoBehaviour
             if (wood > 0)
             {
                 wood = 0;
-                targetGameObject.SetActive(false);
+                // targetGameObject.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
             }
         }
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
-            targetGameObject.SetActive(true);
+            // targetGameObject.SetActive(true);
         }
     }
 
