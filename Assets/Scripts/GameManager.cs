@@ -24,25 +24,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UpdateZonnes();
+    }
+
+
     private void Update()
     {
         if (_oldCurZonePairActive != curZonePairActive)
         {
-            for (int i = 0; i < zonesPairs.Count; i++)
-            {
-                if (i == curZonePairActive)
-                {
-                    zonesPairs[i].pickUpZone.SetActive(true);
-                    zonesPairs[i].dropOffZone.SetActive(true);
-                }
-                else
-                {
-                    zonesPairs[i].pickUpZone.SetActive(false);
-                    zonesPairs[i].dropOffZone.SetActive(false);
-                }
-            }
-
-            _oldCurZonePairActive = curZonePairActive;
+            UpdateZonnes();
         }
+    }
+
+    private void UpdateZonnes()
+    {
+        for (int i = 0; i < zonesPairs.Count; i++)
+        {
+            if (i == curZonePairActive)
+            {
+                zonesPairs[i].pickUpZone.SetActive(true);
+                zonesPairs[i].dropOffZone.SetActive(true);
+            }
+            else
+            {
+                zonesPairs[i].pickUpZone.SetActive(false);
+                zonesPairs[i].dropOffZone.SetActive(false);
+            }
+        }
+        _oldCurZonePairActive = curZonePairActive;
     }
 }
