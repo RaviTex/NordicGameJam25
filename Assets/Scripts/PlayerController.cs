@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
         DebugDrawShipForward();
     }
 
+    private void LateUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, 0.3f, transform.position.z);
+    }
+
     private void FixedUpdate()
     {
         HandleMovement();

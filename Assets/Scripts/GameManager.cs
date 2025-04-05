@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameObject Instance;
+    public static GameManager Instance;
     public List<ZonesPair> zonesPairs;
 
     public int curZonePairActive;
@@ -15,9 +14,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(!Instance)
+        if (!Instance)
         {
-            Instance = gameObject;
+            Instance = this;
         }
         else
         {
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
                     zonesPairs[i].dropOffZone.SetActive(false);
                 }
             }
+
             _oldCurZonePairActive = curZonePairActive;
         }
     }
