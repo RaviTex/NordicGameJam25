@@ -34,12 +34,12 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _ColorMode
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 76af172ef5d4c0049ac798a044a687b1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2e0b4870784bf3244a3af3458fa68586, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
