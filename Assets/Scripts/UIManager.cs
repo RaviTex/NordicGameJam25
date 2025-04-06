@@ -127,6 +127,14 @@ public class UIManager : MonoBehaviour
     {
         LoadScene("Menu");
     }
+    public void LoadWinScreen()
+    {
+        LoadScene("WinScene");
+    }
+    public void LoadTutorial()
+    {
+        LoadScene("Tutorial");
+    }
 
     private void LoadScene(string sceneName)
     {
@@ -138,6 +146,7 @@ public enum UIState
 {
     MainMenu,
     Game,
-    Pause,
+    Tutorial,
+    Win,
     GameOver
 }
