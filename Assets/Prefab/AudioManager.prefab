@@ -57,6 +57,7 @@ MonoBehaviour:
   sfxAudioSource: {fileID: 8712429629188674857}
   engineSound: {fileID: 1726285461130107237}
   beaverScreaming: {fileID: 8300000, guid: 250dab69c6933eb4caaffd6625d5cc5d, type: 3}
+  pickUpSound: {fileID: 8300000, guid: e2c8dc34ef73a4545864096c1707713f, type: 3}
 --- !u!82 &8712429629188674857
 AudioSource:
   m_ObjectHideFlags: 0
