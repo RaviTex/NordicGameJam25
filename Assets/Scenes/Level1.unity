@@ -11124,8 +11124,8 @@ MonoBehaviour:
   playerController: {fileID: 1662346656}
   timeLeft:
   - 50
-  - 40
-  - 40
+  - 50
+  - 50
   - 50
 --- !u!4 &568984033
 Transform:
