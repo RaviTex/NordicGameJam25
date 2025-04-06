@@ -149,7 +149,7 @@ public class UIManager : MonoBehaviour
     }
     public void LoadWinScreen()
     {
-        LoadScene("Win");
+        LoadScene("WinScene");
     }
     public void LoadTutorial()
     {
