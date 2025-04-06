@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private float _currentSpeed;
 
-    // public GameObject targetGameObject;
+    [SerializeField] private GameObject feedBackLogs;
     public GameObject log;
 
     private Quaternion _startRotation;
@@ -60,14 +60,14 @@ public class PlayerController : MonoBehaviour
     {
         float verticalInput = Input.GetAxis("Vertical");
         float targetSpeed = speed * Mathf.Clamp(verticalInput + 1.2f, 0, 1.5f);
-        _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, Time.deltaTime * 0.5f);
-        Quaternion targetRotation = Quaternion.Euler(_currentSpeed * 10f - 35f, 180, 0);
+        _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, Time.deltaTime * 0.6f);
+        Quaternion targetRotation = Quaternion.Euler(Mathf.Clamp(_currentSpeed * 10f - 35f, -15f, 30), 180, 0);
         if (verticalInput == 0)
         {
             targetRotation = Quaternion.Euler(0, 180, 0);
         }
 
-        log.transform.localRotation = Quaternion.Lerp(log.transform.localRotation, targetRotation, Time.deltaTime * 0.5f);
+        log.transform.localRotation = Quaternion.Lerp(log.transform.localRotation, targetRotation, Time.deltaTime * 2f);
         _rb.velocity = _shipForward * _currentSpeed;
     }
 
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             if (wood > 0)
             {
                 wood = 0;
-                // targetGameObject.SetActive(false);
+                feedBackLogs.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
                 UIManager.Instance.UpdateDeliveryBar();
                 other.GetComponentInParent<InteractionBuildings>().StartDisable();
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
-            // targetGameObject.SetActive(true);
+            feedBackLogs.SetActive(true);
             GameManager.Instance.DisableMarker(false);
             other.GetComponentInParent<InteractionBuildings>().StartDisable();
         }
