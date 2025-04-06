@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
             if (wood > 0)
             {
                 wood = 0;
-                AudioManager.instance.PlayPickUpSound();
+                AudioManager.instance.PlayDropOffSound();
                 feedBackLogs.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
                 UIManager.Instance.UpdateDeliveryBar();
