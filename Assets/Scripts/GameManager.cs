@@ -90,6 +90,15 @@ public class GameManager : MonoBehaviour
         playerController.isInputEnabled = false;
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void WonLevel()
     {
         UIManager.Instance.LoadWinScreen();
