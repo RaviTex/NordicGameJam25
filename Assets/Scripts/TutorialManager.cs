@@ -23,8 +23,11 @@ public class TutorialManager : MonoBehaviour
         _nextButton = transform.GetChild(1).GetComponent<Button>();
         GameManager.Instance.playerController.isInputEnabled = false;
         GameManager.Instance.PauseGame();
-        pickUpStation.SetActive(false);
-        dropOffStation.SetActive(false);
+        if (pickUpStation && dropOffStation)
+        {
+            pickUpStation.SetActive(false);
+            dropOffStation.SetActive(false);
+        }
     }
 
     private void Update()
