@@ -85,7 +85,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        UIManager.Instance.LoadMainMenu();
+        UIManager.Instance.GameOver();
+        playerController.isInputEnabled = false;
     }
 
     public void WonLevel()
