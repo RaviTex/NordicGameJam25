@@ -21,8 +21,12 @@ public class TutorialManager : MonoBehaviour
     {
         _tutorialText = transform.GetChild(0).GetComponent<TMP_Text>();
         _nextButton = transform.GetChild(1).GetComponent<Button>();
+        if (GameManager.Instance)
+        {
         GameManager.Instance.playerController.isInputEnabled = false;
         GameManager.Instance.PauseGame();
+
+        }
         if (pickUpStation && dropOffStation)
         {
             pickUpStation.SetActive(false);
