@@ -1096,6 +1096,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f53dfcc69b7dd2e48bc0b1ead797c657, type: 3}
+--- !u!114 &1061885088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5498133290283125781, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1194880412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1098760330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1272,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2320437298109703083, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320437298109703083, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3122321925293780193, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1339,7 +1361,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1194880417}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935484253924092464, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: pickUpStation
+      value: 
+      objectReference: {fileID: 606937864}
+    - target: {fileID: 4935484253924092464, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: dropOffStation
+      value: 
+      objectReference: {fileID: 1352944366}
     - target: {fileID: 5172167519067938435, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
         type: 3}
       propertyPath: m_IsActive
@@ -1465,6 +1497,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7216047856671694054, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 828.287
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216047856671694054, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 207.072
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216047856671694054, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216047856671694054, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -369
+      objectReference: {fileID: 0}
     - target: {fileID: 7600888875724557349, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
         type: 3}
       propertyPath: uiState
@@ -1475,6 +1527,11 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 72
       objectReference: {fileID: 0}
+    - target: {fileID: 8878572286365854897, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1194880414}
     - target: {fileID: 8888917061398334306, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1501,19 +1558,19 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5, type: 3}
---- !u!114 &1194880413 stripped
+--- !u!114 &1194880414 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5498133290283125781, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
+  m_CorrespondingSourceObject: {fileID: 4935484253924092464, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
     type: 3}
   m_PrefabInstance: {fileID: 1194880412}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 0345d3ca7f760e149a0369a0245c9c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1194880414 stripped
+--- !u!114 &1214019178 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7257643950156782186, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
     type: 3}
@@ -1523,18 +1580,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1194880417 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4492564066367902388, guid: e8ccf6e78cd10f6458b12dc8e94ff9a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1194880412}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0345d3ca7f760e149a0369a0245c9c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1303090472
@@ -1719,9 +1764,9 @@ MonoBehaviour:
     dropOffZone: {fileID: 1576686149}
   curZonePairActive: 0
   markerOffset: {x: 0, y: 5, z: 0}
-  pickUpZoneImage: {fileID: 1194880413}
-  dropOffZoneImage: {fileID: 1194880414}
-  markerDisappearDistance: 20
+  pickUpZoneImage: {fileID: 1061885088}
+  dropOffZoneImage: {fileID: 1214019178}
+  markerDisappearDistance: 10
   playerController: {fileID: 47266664}
   timeLeft:
   - 100

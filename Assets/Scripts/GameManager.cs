@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         UpdateMarker();
 
-        if (curZonePairActive > zonesPairs.Count)
+        if (curZonePairActive > zonesPairs.Count-1)
         {
             WonLevel();
             return;
@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
 
     public void WonLevel()
     {
+        AudioManager.instance.StopEngineSound();
         UIManager.Instance.LoadWinScreen();
     }
 
