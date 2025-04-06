@@ -79,6 +79,14 @@ public class UIManager : MonoBehaviour
             winScreen.SetActive(false);
             deathScreen.SetActive(false);
         }
+        else if (uiState == UIState.Empty)
+        {
+            tutorialScreen.SetActive(false);
+            mainMenu.SetActive(false);
+            gameUI.SetActive(false);
+            winScreen.SetActive(false);
+            deathScreen.SetActive(false);
+        }
         _oldUIState = uiState;
     }
     
@@ -93,7 +101,7 @@ public class UIManager : MonoBehaviour
         {
             UpdateUI();
         }
-        if (uiState == UIState.Game)
+        if (uiState == UIState.Game || uiState == UIState.Tutorial)
         {
             timeLeftText.text = timeLeft.ToString(timeLeft >= 10f ? "0" : "0.00");
             if (timeLeft <= 10f)
@@ -150,6 +158,10 @@ public class UIManager : MonoBehaviour
     {
         LoadScene("Level1");
     }
+    public void PlayTutorial()
+    {
+        LoadScene("TutorialScene");
+    }
     public void Quit()
     {
         #if UNITY_EDITOR
@@ -168,7 +180,12 @@ public class UIManager : MonoBehaviour
     }
     public void LoadTutorial()
     {
-        LoadScene("Tutorial");
+        LoadScene("TutorialScene");
+    }
+
+    public void LoadCreditScreen()
+    {
+        LoadScene("CreditScreenScene");
     }
     public void GameOver()
     {
@@ -187,5 +204,6 @@ public enum UIState
     Game,
     Tutorial,
     Win,
-    GameOver
+    GameOver,
+    Empty
 }

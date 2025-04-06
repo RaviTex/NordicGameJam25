@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
@@ -15,6 +16,9 @@ public class AudioManager : MonoBehaviour
     
     [SerializeField] private AudioSource sfxAudioSource;
     [SerializeField] private AudioSource engineSound;
+    [SerializeField] private AudioClip beaverScreaming;
+    [SerializeField] private AudioClip pickUpSound;
+    [SerializeField] private AudioClip dropOffSound;
     
     private void Awake()
     {
@@ -26,6 +30,14 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "Menu")
+        {
+            StopEngineSound();
         }
     }
 
@@ -47,6 +59,19 @@ public class AudioManager : MonoBehaviour
     public void StopEngineSound()
     {
         engineSound.Stop();
+    }
+    public void PlayPickUpSound()
+    {
+        sfxAudioSource.PlayOneShot(pickUpSound);
+    }
+    public void PlayDropOffSound()
+    {
+        sfxAudioSource.PlayOneShot(dropOffSound);
+    }
+    
+    public void PlayBeaverScream()
+    {
+        sfxAudioSource.PlayOneShot(beaverScreaming);
     }
     
     public void PlayLogCrashSound()
