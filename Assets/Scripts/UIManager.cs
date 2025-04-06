@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
         {
             UpdateUI();
         }
-        if (uiState == UIState.Game)
+        if (uiState == UIState.Game || uiState == UIState.Tutorial)
         {
             timeLeftText.text = timeLeft.ToString(timeLeft >= 10f ? "0" : "0.00");
             if (timeLeft <= 10f)
