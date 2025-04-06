@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         UIManager.Instance.GameOver();
+        AudioManager.instance.StopEngineSound();
         playerController.isInputEnabled = false;
     }
 
