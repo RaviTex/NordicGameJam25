@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a2754aecf543f794096014f3a3cb8e2d, type: 3}
   sfxAudioSource: {fileID: 8712429629188674857}
   engineSound: {fileID: 1726285461130107237}
+  beaverScreaming: {fileID: 8300000, guid: 250dab69c6933eb4caaffd6625d5cc5d, type: 3}
 --- !u!82 &8712429629188674857
 AudioSource:
   m_ObjectHideFlags: 0

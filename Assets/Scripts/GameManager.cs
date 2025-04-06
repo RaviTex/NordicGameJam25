@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.GameOver();
         AudioManager.instance.StopEngineSound();
+        AudioManager.instance.PlayBeaverScream();
         playerController.isInputEnabled = false;
     }
 
