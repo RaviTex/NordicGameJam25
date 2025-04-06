@@ -185,7 +185,7 @@ public class UIManager : MonoBehaviour
 
     public void LoadCreditScreen()
     {
-        LoadScene("CreditsScreenScene");
+        LoadScene("CreditScreenScene");
     }
     public void GameOver()
     {
