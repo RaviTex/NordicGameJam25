@@ -64,7 +64,12 @@ public class GameManager : MonoBehaviour
             UpdateZones();
         }
         UpdateMarker();
-        
+
+        if (curZonePairActive > zonesPairs.Count)
+        {
+            WonLevel();
+            return;
+        }
         timeLeft[curZonePairActive] -= Time.deltaTime;
         if(timeLeft[curZonePairActive] <= 0)
         {
@@ -77,6 +82,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         UIManager.Instance.LoadMainMenu();
+    }
+    public void WonLevel()
+    {
+        UIManager.Instance.LoadWinScreen();
     }
 
     private void UpdateMarker()
