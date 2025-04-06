@@ -10938,9 +10938,10 @@ MonoBehaviour:
   - pickUpZone: {fileID: 2074601980}
     dropOffZone: {fileID: 2020582343}
   curZonePairActive: 0
-  markerOffset: {x: 0, y: 2, z: 0}
+  markerOffset: {x: 0, y: 5, z: 0}
   pickUpZoneImage: {fileID: 1182767311}
   dropOffZoneImage: {fileID: 1939853211}
+  markerDisappearDistance: 20
   playerController: {fileID: 1662346656}
   timeLeft:
   - 50
@@ -43153,3 +43154,5 @@ SceneRoots:
   - {fileID: 2074601979}
   - {fileID: 1113639574}
   - {fileID: 559437767}
+  - {fileID: 728821098}
+  - {fileID: 742210691}
