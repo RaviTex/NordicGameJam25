@@ -1413,7 +1413,7 @@ PrefabInstance:
     - target: {fileID: 4923567156566804114, guid: c2ac98f16d038ec44920bf0212169bc1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5061823882628119077, guid: c2ac98f16d038ec44920bf0212169bc1,
         type: 3}
@@ -11893,6 +11893,7 @@ MonoBehaviour:
   - 50
   - 30
   - 30
+  isTutorial: 0
 --- !u!4 &568984033
 Transform:
   m_ObjectHideFlags: 0
