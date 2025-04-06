@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public UIState uiState;
+    private UIState _oldUIState;
 
     [Header("Different UI Panels")] 
     [SerializeField] private GameObject mainMenu;
@@ -34,6 +35,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        UpdateUI();
+    }
+    private void UpdateUI()
+    {
         if (uiState == UIState.MainMenu)
         {
             mainMenu.SetActive(true);
@@ -44,10 +49,15 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(false);
             gameUI.SetActive(true);
         }
+        _oldUIState = uiState;
     }
 
     private void Update()
     {
+        if (uiState != _oldUIState)
+        {
+            UpdateUI();
+        }
         if (uiState == UIState.Game)
         {
             timeLeftText.text = timeLeft.ToString(timeLeft >= 10f ? "0" : "0.00");
