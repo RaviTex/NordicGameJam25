@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     
     [SerializeField] private AudioSource sfxAudioSource;
     [SerializeField] private AudioSource engineSound;
+    [SerializeField] private AudioClip beaverScreaming;
     
     private void Awake()
     {
@@ -47,6 +48,11 @@ public class AudioManager : MonoBehaviour
     public void StopEngineSound()
     {
         engineSound.Stop();
+    }
+    
+    public void PlayBeaverScream()
+    {
+        sfxAudioSource.PlayOneShot(beaverScreaming);
     }
     
     public void PlayLogCrashSound()

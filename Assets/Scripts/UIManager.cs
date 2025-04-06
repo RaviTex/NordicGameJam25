@@ -150,6 +150,10 @@ public class UIManager : MonoBehaviour
     {
         LoadScene("Level1");
     }
+    public void PlayTutorial()
+    {
+        LoadScene("TutorialScene");
+    }
     public void Quit()
     {
         #if UNITY_EDITOR
@@ -168,7 +172,7 @@ public class UIManager : MonoBehaviour
     }
     public void LoadTutorial()
     {
-        LoadScene("Tutorial");
+        LoadScene("TutorialScene");
     }
     public void GameOver()
     {
