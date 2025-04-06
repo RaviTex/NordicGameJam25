@@ -9,6 +9,13 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    public UIState uiState;
+    private UIState _oldUIState;
+
+    [Header("Different UI Panels")] 
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject gameUI;
+
     public TMP_Text timeLeftText;
     public float timeLeft = 50f;
     public DeliveryBar deliveryBar;
@@ -26,18 +33,44 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UpdateUI();
+    }
+    private void UpdateUI()
+    {
+        if (uiState == UIState.MainMenu)
+        {
+            mainMenu.SetActive(true);
+            gameUI.SetActive(false);
+        }
+        else if (uiState == UIState.Game)
+        {
+            mainMenu.SetActive(false);
+            gameUI.SetActive(true);
+        }
+        _oldUIState = uiState;
+    }
+
     private void Update()
     {
-        timeLeftText.text = timeLeft.ToString(timeLeft >= 10f ? "0" : "0.00");
-        if (timeLeft <= 10f)
+        if (uiState != _oldUIState)
         {
-            if (!_isPulsing)
+            UpdateUI();
+        }
+        if (uiState == UIState.Game)
+        {
+            timeLeftText.text = timeLeft.ToString(timeLeft >= 10f ? "0" : "0.00");
+            if (timeLeft <= 10f)
             {
-                StartCoroutine(PulseText());
+                if (!_isPulsing)
+                {
+                    StartCoroutine(PulseText());
+                }
             }
         }
     }
-    
+
     private IEnumerator PulseText()
     {
         _isPulsing = true;
@@ -49,7 +82,7 @@ public class UIManager : MonoBehaviour
         while (timeLeft <= 10f)
         {
             float speed = Mathf.Lerp(5f, 1f, timeLeft / 10f);
-            duration =  1f / speed;
+            duration = 1f / speed;
             while (elapsedTime < duration)
             {
                 timeLeftText.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / duration);
@@ -82,6 +115,13 @@ public class UIManager : MonoBehaviour
     {
         LoadScene("Level1");
     }
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
+    }
 
     public void LoadMainMenu()
     {
@@ -92,4 +132,12 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+}
+
+public enum UIState
+{
+    MainMenu,
+    Game,
+    Pause,
+    GameOver
 }
