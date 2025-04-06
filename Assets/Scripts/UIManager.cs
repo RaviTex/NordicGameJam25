@@ -182,6 +182,11 @@ public class UIManager : MonoBehaviour
     {
         LoadScene("TutorialScene");
     }
+
+    public void LoadCreditScreen()
+    {
+        LoadScene("CreditsScreenScene");
+    }
     public void GameOver()
     {
         uiState = UIState.GameOver;
