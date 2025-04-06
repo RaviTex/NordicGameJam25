@@ -25,6 +25,11 @@ public class PlayerController : MonoBehaviour
 
     public ParticleSystem logSplash;
 
+    public bool isInputEnabled = true;
+
+    private EngineState _engineState;
+    private EngineState _oldEngineState;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -37,10 +42,28 @@ public class PlayerController : MonoBehaviour
         UpdateShipForward();
         DebugDrawShipForward();
         _rb.MovePosition(new Vector3(transform.position.x, customYLevel, transform.position.z));
+
+        float verticalInput = Input.GetAxis("Vertical");
+        if (verticalInput > 0f && _engineState != EngineState.Fast)
+        {
+            _engineState = EngineState.Fast;
+            AudioManager.instance.EngineFast();
+        }
+        else if (verticalInput < 0f && _engineState != EngineState.Idle)
+        {
+            _engineState = EngineState.Idle;
+            AudioManager.instance.EngineIdle();
+        }
+        else if (verticalInput == 0f && _engineState != EngineState.Slow)
+        {
+            _engineState = EngineState.Slow;
+            AudioManager.instance.EngineSlow();
+        }
     }
 
     private void FixedUpdate()
     {
+        if (!isInputEnabled) return;
         HandleMovement();
         HandleSteering();
     }
@@ -99,4 +122,11 @@ public class PlayerController : MonoBehaviour
             other.GetComponentInParent<InteractionBuildings>().StartDisable();
         }
     }
+}
+
+public enum EngineState
+{
+    Idle,
+    Slow,
+    Fast
 }
