@@ -79,6 +79,14 @@ public class UIManager : MonoBehaviour
             winScreen.SetActive(false);
             deathScreen.SetActive(false);
         }
+        else if (uiState == UIState.Empty)
+        {
+            tutorialScreen.SetActive(false);
+            mainMenu.SetActive(false);
+            gameUI.SetActive(false);
+            winScreen.SetActive(false);
+            deathScreen.SetActive(false);
+        }
         _oldUIState = uiState;
     }
     
@@ -191,5 +199,6 @@ public enum UIState
     Game,
     Tutorial,
     Win,
-    GameOver
+    GameOver,
+    Empty
 }

@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
             if (wood > 0)
             {
                 wood = 0;
+                AudioManager.instance.PlayPickUpSound();
                 feedBackLogs.SetActive(false);
                 GameManager.Instance.curZonePairActive++;
                 UIManager.Instance.UpdateDeliveryBar();
@@ -117,6 +118,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("PickUp"))
         {
             wood++;
+            AudioManager.instance.PlayPickUpSound();
             feedBackLogs.SetActive(true);
             GameManager.Instance.DisableMarker(false);
             other.GetComponentInParent<InteractionBuildings>().StartDisable();
