@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private Quaternion _startRotation;
 
     public ParticleSystem logSplash;
+    
+    public bool isInputEnabled = true;
 
     private void Start()
     {
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isInputEnabled) return;
         HandleMovement();
         HandleSteering();
     }

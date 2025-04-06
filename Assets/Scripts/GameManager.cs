@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Vector3 markerOffset;
     public Image pickUpZoneImage;
     public Image dropOffZoneImage;
+    [SerializeField] private float markerDisappearDistance;
     private TMP_Text _dropOffDistanceText;
     private TMP_Text _pickUpDistanceText;
 
@@ -63,20 +64,34 @@ public class GameManager : MonoBehaviour
         {
             UpdateZones();
         }
+
         UpdateMarker();
-        
+
+        if (curZonePairActive > zonesPairs.Count)
+        {
+            WonLevel();
+            return;
+        }
+
         timeLeft[curZonePairActive] -= Time.deltaTime;
-        if(timeLeft[curZonePairActive] <= 0)
+        if (timeLeft[curZonePairActive] <= 0)
         {
             GameOver();
             timeLeft[curZonePairActive] = 0;
         }
+
         UIManager.Instance.timeLeft = timeLeft[curZonePairActive];
     }
 
     public void GameOver()
     {
-        UIManager.Instance.LoadMainMenu();
+        UIManager.Instance.GameOver();
+        playerController.isInputEnabled = false;
+    }
+
+    public void WonLevel()
+    {
+        UIManager.Instance.LoadWinScreen();
     }
 
     private void UpdateMarker()
@@ -85,9 +100,14 @@ public class GameManager : MonoBehaviour
         {
             _dropOffMarker.transform.position = MarkerPosition(true);
             _pickUpMarker.transform.position = MarkerPosition(false);
-            _dropOffDistanceText.text =
-                Vector3.Distance(_curDropOffZone.transform.position, playerController.transform.position).ToString("0") + "m";
-            _pickUpDistanceText.text = Vector3.Distance(_curPickUpZone.transform.position, playerController.transform.position).ToString("0") + "m";
+            float dropOffDistance = Vector3.Distance(_curDropOffZone.transform.position, playerController.transform.position);
+            if(dropOffDistance < markerDisappearDistance)
+                _pickUpMarker.SetActive(false);
+            _dropOffDistanceText.text = dropOffDistance.ToString("0") + "m";
+            float pickUpDistance = Vector3.Distance(_curPickUpZone.transform.position, playerController.transform.position);
+            if(pickUpDistance < markerDisappearDistance)
+                _pickUpMarker.SetActive(false);
+            _pickUpDistanceText.text = pickUpDistance.ToString("0") + "m";
         }
     }
 

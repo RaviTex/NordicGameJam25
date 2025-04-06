@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [Header("Different UI Panels")] 
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject gameUI;
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject deathScreen;
 
     public TMP_Text timeLeftText;
     public float timeLeft = 50f;
@@ -43,11 +45,29 @@ public class UIManager : MonoBehaviour
         {
             mainMenu.SetActive(true);
             gameUI.SetActive(false);
+            winScreen.SetActive(false);
+            deathScreen.SetActive(false);
         }
         else if (uiState == UIState.Game)
         {
             mainMenu.SetActive(false);
             gameUI.SetActive(true);
+            winScreen.SetActive(false);
+            deathScreen.SetActive(false);
+        }
+        else if (uiState == UIState.Win)
+        {
+            winScreen.SetActive(true);
+            mainMenu.SetActive(false);
+            gameUI.SetActive(false);
+            deathScreen.SetActive(false);
+        }
+        else if (uiState == UIState.GameOver)
+        {
+            deathScreen.SetActive(true);
+            mainMenu.SetActive(false);
+            gameUI.SetActive(false);
+            winScreen.SetActive(false);
         }
         _oldUIState = uiState;
     }
@@ -127,6 +147,18 @@ public class UIManager : MonoBehaviour
     {
         LoadScene("Menu");
     }
+    public void LoadWinScreen()
+    {
+        LoadScene("Win");
+    }
+    public void LoadTutorial()
+    {
+        LoadScene("Tutorial");
+    }
+    public void GameOver()
+    {
+        uiState = UIState.GameOver;
+    }
 
     private void LoadScene(string sceneName)
     {
@@ -138,6 +170,7 @@ public enum UIState
 {
     MainMenu,
     Game,
-    Pause,
+    Tutorial,
+    Win,
     GameOver
 }
