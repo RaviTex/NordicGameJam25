@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public PlayerController playerController;
 
     public List<float> timeLeft;
+    public bool isTutorial = false;
 
 
     private void Awake()
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
 
         UpdateMarker();
 
-        if (curZonePairActive > zonesPairs.Count-1)
+        if (curZonePairActive > zonesPairs.Count - 1)
         {
             WonLevel();
             return;
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
     }
+
     public void ResumeGame()
     {
         Time.timeScale = 1f;
@@ -103,6 +105,12 @@ public class GameManager : MonoBehaviour
     public void WonLevel()
     {
         AudioManager.instance.StopEngineSound();
+        if (isTutorial)
+        {
+            UIManager.Instance.LoadMainMenu();
+            return;
+        }
+
         UIManager.Instance.LoadWinScreen();
     }
 
@@ -113,11 +121,11 @@ public class GameManager : MonoBehaviour
             _dropOffMarker.transform.position = MarkerPosition(true);
             _pickUpMarker.transform.position = MarkerPosition(false);
             float dropOffDistance = Vector3.Distance(_curDropOffZone.transform.position, playerController.transform.position);
-            if(dropOffDistance < markerDisappearDistance)
+            if (dropOffDistance < markerDisappearDistance)
                 _pickUpMarker.SetActive(false);
             _dropOffDistanceText.text = dropOffDistance.ToString("0") + "m";
             float pickUpDistance = Vector3.Distance(_curPickUpZone.transform.position, playerController.transform.position);
-            if(pickUpDistance < markerDisappearDistance)
+            if (pickUpDistance < markerDisappearDistance)
                 _pickUpMarker.SetActive(false);
             _pickUpDistanceText.text = pickUpDistance.ToString("0") + "m";
         }

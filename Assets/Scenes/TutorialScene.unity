@@ -1844,6 +1844,7 @@ MonoBehaviour:
   playerController: {fileID: 47266664}
   timeLeft:
   - 100
+  isTutorial: 1
 --- !u!4 &1769912012
 Transform:
   m_ObjectHideFlags: 0
