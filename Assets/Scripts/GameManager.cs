@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         UpdateMarker();
 
-        if (curZonePairActive > zonesPairs.Count)
+        if (curZonePairActive > zonesPairs.Count-1)
         {
             WonLevel();
             return;
@@ -90,8 +90,18 @@ public class GameManager : MonoBehaviour
         playerController.isInputEnabled = false;
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void WonLevel()
     {
+        AudioManager.instance.StopEngineSound();
         UIManager.Instance.LoadWinScreen();
     }
 

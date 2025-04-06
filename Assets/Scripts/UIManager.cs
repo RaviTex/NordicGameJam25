@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameUI;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject tutorialScreen;
 
     public TMP_Text timeLeftText;
     public float timeLeft = 50f;
@@ -47,6 +45,7 @@ public class UIManager : MonoBehaviour
             gameUI.SetActive(false);
             winScreen.SetActive(false);
             deathScreen.SetActive(false);
+            tutorialScreen.SetActive(false);
         }
         else if (uiState == UIState.Game)
         {
@@ -54,6 +53,7 @@ public class UIManager : MonoBehaviour
             gameUI.SetActive(true);
             winScreen.SetActive(false);
             deathScreen.SetActive(false);
+            tutorialScreen.SetActive(false);
         }
         else if (uiState == UIState.Win)
         {
@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(false);
             gameUI.SetActive(false);
             deathScreen.SetActive(false);
+            tutorialScreen.SetActive(false);
         }
         else if (uiState == UIState.GameOver)
         {
@@ -68,8 +69,22 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(false);
             gameUI.SetActive(false);
             winScreen.SetActive(false);
+            tutorialScreen.SetActive(false);
+        }
+        else if(uiState == UIState.Tutorial)
+        {
+            tutorialScreen.SetActive(true);
+            mainMenu.SetActive(false);
+            gameUI.SetActive(false);
+            winScreen.SetActive(false);
+            deathScreen.SetActive(false);
         }
         _oldUIState = uiState;
+    }
+    
+    public void EnableGameUIForTutorial()
+    {
+        gameUI.SetActive(true);
     }
 
     private void Update()
