@@ -8,7 +8,7 @@ public class DeliveryBar : MonoBehaviour
     [SerializeField] private Image bar;
 
     [SerializeField] private int resourceCurrent = 0;
-    [SerializeField] private int resourceMax = 5;
+    [SerializeField] private int resourceMax = 4;
     
     private Image _barBackground;
 
